@@ -30,6 +30,7 @@ import io.ktor.response.respond
 import io.ktor.response.respondText
 import io.ktor.routing.get
 import io.ktor.routing.routing
+import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.webSocket
 import kotlinx.coroutines.runBlocking
 import org.slf4j.event.Level
@@ -37,6 +38,7 @@ import java.time.Duration
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
+@KtorExperimentalAPI
 @OptIn(KtorExperimentalLocationsAPI::class)
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
