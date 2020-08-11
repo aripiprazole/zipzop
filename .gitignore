@@ -13,3 +13,7 @@
 /**/captures
 /**/.externalNativeBuild
 /**/.cxx
+
+/**/*.pub
+/**/*.cert
+/**/*.pem

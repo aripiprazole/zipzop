@@ -19,6 +19,9 @@ import io.ktor.routing.Routing
 import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.WebSockets
 import org.kodein.di.ktor.DIFeature
+import org.kodein.di.ktor.di
+import java.nio.file.Files
+import java.nio.file.Path
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -32,10 +35,12 @@ fun Application.module(testing: Boolean = false) {
 
   install(CallLogging) { setup() }
 
-  install(Authentication) { setup() }
-  install(WebSockets) { setup() }
+  install(DIFeature) { setup(environment.config) }
 
-  install(DIFeature) { setup() }
+  val di = di()
+
+  install(Authentication) { setup(di, environment.config.config("ktor.jwt")) }
+  install(WebSockets) { setup() }
 
   DatabaseInitializer.setupDatabase(environment.config.config("ktor.database"))
   HttpClientInitializer.setupHttpClient()
