@@ -1,138 +1,42 @@
 package com.lorenzoog.zipzop
 
+import com.lorenzoog.zipzop.config.auth.setup
+import com.lorenzoog.zipzop.config.database.DatabaseInitializer
+import com.lorenzoog.zipzop.config.httpclient.HttpClientInitializer
+import com.lorenzoog.zipzop.config.logging.setup
+import com.lorenzoog.zipzop.config.routing.setup
+import com.lorenzoog.zipzop.config.websockets.setup
 import io.ktor.application.Application
-import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.auth.Authentication
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
-import io.ktor.client.features.HttpTimeout
-import io.ktor.client.features.auth.Auth
-import io.ktor.client.features.json.GsonSerializer
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.logging.LogLevel
-import io.ktor.client.features.logging.Logging
 import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
-import io.ktor.features.StatusPages
-import io.ktor.http.ContentType
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.cio.websocket.Frame
-import io.ktor.http.cio.websocket.pingPeriod
-import io.ktor.http.cio.websocket.readText
-import io.ktor.http.cio.websocket.timeout
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Location
 import io.ktor.locations.Locations
-import io.ktor.locations.get
-import io.ktor.request.path
-import io.ktor.response.respond
-import io.ktor.response.respondText
-import io.ktor.routing.get
-import io.ktor.routing.routing
+import io.ktor.routing.Routing
 import io.ktor.util.KtorExperimentalAPI
-import io.ktor.websocket.webSocket
-import kotlinx.coroutines.runBlocking
-import org.slf4j.event.Level
-import java.time.Duration
+import io.ktor.websocket.WebSockets
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
-@KtorExperimentalAPI
-@OptIn(KtorExperimentalLocationsAPI::class)
 @Suppress("unused") // Referenced in application.conf
+@KtorExperimentalAPI
 @kotlin.jvm.JvmOverloads
+@OptIn(KtorExperimentalLocationsAPI::class)
 fun Application.module(testing: Boolean = false) {
-  install(Locations) {
-  }
+  install(Locations)
+  install(ContentNegotiation)
 
-  install(CallLogging) {
-    level = Level.INFO
+  install(CallLogging) { setup() }
 
-    filter { call -> call.request.path().startsWith("/") }
-  }
+  install(Authentication) { setup() }
+  install(WebSockets) { setup() }
 
-  install(Authentication) {
-  }
+  DatabaseInitializer.setupDatabase(environment.config.config("database"))
+  HttpClientInitializer.setupHttpClient()
 
-  install(ContentNegotiation) {
-  }
-
-  val client = HttpClient(CIO) {
-    install(HttpTimeout) {
-    }
-
-    install(Auth) {
-    }
-
-    install(JsonFeature) {
-      serializer = GsonSerializer()
-    }
-
-    install(Logging) {
-      level = LogLevel.HEADERS
-    }
-
-    // install(UserAgent) { agent = "some user agent" }
-  }
-
-  runBlocking {
-    // Sample for making a HTTP Client request
-    /*
-    val message = client.post<JsonSampleClass> {
-        url("http://127.0.0.1:8080/path/to/endpoint")
-        contentType(ContentType.Application.Json)
-        body = JsonSampleClass(hello = "world")
-    }
-    */
-  }
-
-  install(io.ktor.websocket.WebSockets) {
-    pingPeriod = Duration.ofSeconds(15)
-    timeout = Duration.ofSeconds(15)
-    maxFrameSize = Long.MAX_VALUE
-    masking = false
-  }
-
-  routing {
-    get("/") {
-      call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
-    }
-
-    get<MyLocation> {
-      call.respondText("Location: name=${it.name}, arg1=${it.arg1}, arg2=${it.arg2}")
-    }
-
-    // Register nested routes
-    get<Type.Edit> {
-      call.respondText("Inside $it")
-    }
-
-    get<Type.List> {
-      call.respondText("Inside $it")
-    }
-
-    install(StatusPages) {
-      exception<AuthenticationException> { cause ->
-        call.respond(HttpStatusCode.Unauthorized)
-      }
-
-      exception<AuthorizationException> { cause ->
-        call.respond(HttpStatusCode.Forbidden)
-      }
-
-    }
-
-    webSocket("/myws/echo") {
-      send(Frame.Text("Hi from server"))
-      while (true) {
-        val frame = incoming.receive()
-        if (frame is Frame.Text) {
-          send(Frame.Text("Client said: " + frame.readText()))
-        }
-      }
-    }
-  }
+  install(Routing) { setup() }
 }
 
 @OptIn(KtorExperimentalLocationsAPI::class)
