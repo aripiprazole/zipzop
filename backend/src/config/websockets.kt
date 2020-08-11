@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.websockets
+package com.lorenzoog.zipzop.config
 
 import io.ktor.http.cio.websocket.pingPeriod
 import io.ktor.http.cio.websocket.timeout

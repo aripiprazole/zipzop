@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.routing
+package com.lorenzoog.zipzop.config
 
 import com.lorenzoog.zipzop.AuthenticationException
 import com.lorenzoog.zipzop.AuthorizationException

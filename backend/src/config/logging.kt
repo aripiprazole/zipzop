@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.logging
+package com.lorenzoog.zipzop.config
 
 import io.ktor.features.CallLogging.Configuration
 import io.ktor.request.path

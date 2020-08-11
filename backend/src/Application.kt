@@ -1,18 +1,14 @@
 package com.lorenzoog.zipzop
 
-import com.lorenzoog.zipzop.config.auth.setup
-import com.lorenzoog.zipzop.config.database.DatabaseInitializer
-import com.lorenzoog.zipzop.config.httpclient.HttpClientInitializer
+import com.lorenzoog.zipzop.config.setup
+import com.lorenzoog.zipzop.config.DatabaseInitializer
+import com.lorenzoog.zipzop.config.HttpClientInitializer
 import com.lorenzoog.zipzop.config.kodein.setup
-import com.lorenzoog.zipzop.config.logging.setup
-import com.lorenzoog.zipzop.config.routing.setup
-import com.lorenzoog.zipzop.config.websockets.setup
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.auth.Authentication
 import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
-import io.ktor.http.ContentType
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Locations
 import io.ktor.routing.Routing
