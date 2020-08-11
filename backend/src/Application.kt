@@ -33,7 +33,7 @@ fun Application.module(testing: Boolean = false) {
   install(Authentication) { setup() }
   install(WebSockets) { setup() }
 
-  DatabaseInitializer.setupDatabase(environment.config.config("database"))
+  DatabaseInitializer.setupDatabase(environment.config.config("ktor.database"))
   HttpClientInitializer.setupHttpClient()
 
   install(Routing) { setup() }
