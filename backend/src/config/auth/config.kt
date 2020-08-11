@@ -42,21 +42,3 @@ fun Configuration.setup(di: DI, config: ApplicationConfig) {
   }
 }
 
-@Suppress("UNCHECKED_CAST")
-suspend fun <PrivateKeyType, PublicKeyType> KeyFactory.getKeyPair(
-  publicKeyPath: String,
-  privateKeyPath: String
-): Pair<PublicKeyType, PrivateKeyType> {
-  val publicKey = withContext(Dispatchers.IO) {
-    val bytes: ByteArray = Files.readAllBytes(Path.of(publicKeyPath))
-
-    generatePublic(X509EncodedKeySpec(bytes)) as PublicKeyType
-  }
-  val privateKey = withContext(Dispatchers.IO) {
-    val bytes: ByteArray = Files.readAllBytes(Path.of(privateKeyPath))
-
-    generatePrivate(PKCS8EncodedKeySpec(bytes)) as PrivateKeyType
-  }
-
-  return publicKey to privateKey
-}
