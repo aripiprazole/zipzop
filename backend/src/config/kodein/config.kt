@@ -16,5 +16,5 @@ fun MainBuilder.setup(config: ApplicationConfig) {
   import(DI.Module(MAIN_MODULE_NAME) {
     bind<UserService>() with singleton { ExposedUserService() }
   })
-  import(jwtModule(config.config("ktor.jwt")))
+  import(authModule(config.config("ktor.jwt")))
 }
