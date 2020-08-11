@@ -11,11 +11,13 @@ import io.ktor.locations.Location
 import io.ktor.locations.post
 import io.ktor.response.respond
 import io.ktor.routing.Routing
+import kotlinx.serialization.Serializable
 import org.kodein.di.instance
 import org.kodein.di.ktor.di
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 @Location("/login")
+@Serializable
 data class Login(val username: String, val password: String)
 
 @OptIn(KtorExperimentalLocationsAPI::class)
@@ -30,7 +32,7 @@ fun Routing.sessionController() {
     val user = userService.findByUsername(credentials.username)
 
     if(!passwordEncoder.matches(credentials.password, user.password))
-      throw AuthenticationException();
+      throw AuthenticationException()
 
     call.respond(LoginResponseDTO(jwtService.encode(user)))
   }
