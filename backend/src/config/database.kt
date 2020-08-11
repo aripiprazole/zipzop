@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.database
+package com.lorenzoog.zipzop.config
 
 import com.lorenzoog.zipzop.tables.Users
 import io.ktor.config.ApplicationConfig

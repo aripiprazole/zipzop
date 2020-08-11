@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.auth
+package com.lorenzoog.zipzop.config
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm

@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.httpclient
+package com.lorenzoog.zipzop.config
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
