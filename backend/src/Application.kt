@@ -3,6 +3,7 @@ package com.lorenzoog.zipzop
 import com.lorenzoog.zipzop.config.auth.setup
 import com.lorenzoog.zipzop.config.database.DatabaseInitializer
 import com.lorenzoog.zipzop.config.httpclient.HttpClientInitializer
+import com.lorenzoog.zipzop.config.kodein.setup
 import com.lorenzoog.zipzop.config.logging.setup
 import com.lorenzoog.zipzop.config.routing.setup
 import com.lorenzoog.zipzop.config.websockets.setup
@@ -17,6 +18,7 @@ import io.ktor.locations.Locations
 import io.ktor.routing.Routing
 import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.WebSockets
+import org.kodein.di.ktor.DIFeature
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -32,6 +34,8 @@ fun Application.module(testing: Boolean = false) {
 
   install(Authentication) { setup() }
   install(WebSockets) { setup() }
+
+  install(DIFeature) { setup() }
 
   DatabaseInitializer.setupDatabase(environment.config.config("ktor.database"))
   HttpClientInitializer.setupHttpClient()
