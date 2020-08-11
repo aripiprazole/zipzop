@@ -13,7 +13,6 @@ import io.ktor.auth.Authentication
 import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
 import io.ktor.locations.KtorExperimentalLocationsAPI
-import io.ktor.locations.Location
 import io.ktor.locations.Locations
 import io.ktor.routing.Routing
 import io.ktor.sessions.Sessions
@@ -48,20 +47,6 @@ fun Application.module(testing: Boolean = false) {
   HttpClientInitializer.setupHttpClient()
 
   install(Routing) { setup() }
-}
-
-@OptIn(KtorExperimentalLocationsAPI::class)
-@Location("/location/{name}")
-class MyLocation(val name: String, val arg1: Int = 42, val arg2: String = "default")
-
-@OptIn(KtorExperimentalLocationsAPI::class)
-@Location("/type/{name}")
-data class Type(val name: String) {
-  @Location("/edit")
-  data class Edit(val type: Type)
-
-  @Location("/list/{page}")
-  data class List(val type: Type, val page: Int)
 }
 
 class AuthenticationException : RuntimeException()
