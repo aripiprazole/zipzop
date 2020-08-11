@@ -1,6 +1,7 @@
 package com.lorenzoog.zipzop.config.kodein
 
 import com.auth0.jwt.algorithms.Algorithm
+import com.lorenzoog.zipzop.auth.JwtService
 import com.lorenzoog.zipzop.config.auth.password.Argon2PasswordEncoder
 import com.lorenzoog.zipzop.config.auth.password.PasswordEncoder
 import io.ktor.config.ApplicationConfig
@@ -13,6 +14,8 @@ import org.kodein.di.singleton
 fun authModule(config: ApplicationConfig) =
   DI.Module("Auth module") {
     bind<PasswordEncoder>() with singleton { Argon2PasswordEncoder() }
+
+    bind<JwtService>() with singleton { JwtService(config.config("ktor.jwt"), di) }
 
     bind<Algorithm>() with singleton {
       Algorithm.HMAC256("temp secret")
