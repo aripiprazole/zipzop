@@ -28,6 +28,8 @@ import java.time.Duration
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
+val Json = Json(JsonConfiguration.Stable)
+
 @Suppress("unused") // Referenced in application.conf
 @KtorExperimentalAPI
 @kotlin.jvm.JvmOverloads
@@ -36,7 +38,7 @@ fun Application.module(testing: Boolean = false) {
   install(Locations)
   install(Sessions)
   install(ContentNegotiation) {
-    json(json = Json(JsonConfiguration.Stable))
+    json(json = com.lorenzoog.zipzop.Json)
   }
   install(CallLogging) {
     level = Level.INFO
