@@ -13,22 +13,7 @@ import io.ktor.routing.Routing
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Routing.setup() {
-  get("/") {
-    call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
-  }
-
-  get<MyLocation> {
-    call.respondText("Location: name=${it.name}, arg1=${it.arg1}, arg2=${it.arg2}")
-  }
-
-  // Register nested routes
-  get<Type.Edit> {
-    call.respondText("Inside $it")
-  }
-
-  get<Type.List> {
-    call.respondText("Inside $it")
-  }
+  sessionController()
 
   install(StatusPages) {
     exception<AuthenticationException> { cause ->
