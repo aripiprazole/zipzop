@@ -20,8 +20,6 @@ import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.WebSockets
 import org.kodein.di.ktor.DIFeature
 import org.kodein.di.ktor.di
-import java.nio.file.Files
-import java.nio.file.Path
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
