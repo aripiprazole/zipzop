@@ -8,8 +8,8 @@ import org.kodein.di.bind
 import org.kodein.di.singleton
 
 @OptIn(KtorExperimentalAPI::class)
-fun jwtModule(config: ApplicationConfig) =
-  DI.Module("Jwt module") {
+fun authModule(config: ApplicationConfig) =
+  DI.Module("Auth module") {
     bind<Algorithm>() with singleton {
       Algorithm.HMAC256("temp secret")
 //      TODO: use RSA512 instead of HMAC256
