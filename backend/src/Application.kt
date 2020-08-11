@@ -16,6 +16,7 @@ import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Location
 import io.ktor.locations.Locations
 import io.ktor.routing.Routing
+import io.ktor.sessions.Sessions
 import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.WebSockets
 import org.kodein.di.ktor.DIFeature
@@ -32,6 +33,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 fun Application.module(testing: Boolean = false) {
   install(Locations)
   install(ContentNegotiation)
+  install(Sessions)
 
   install(CallLogging) { setup() }
 
