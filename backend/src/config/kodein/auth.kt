@@ -1,6 +1,8 @@
 package com.lorenzoog.zipzop.config.kodein
 
 import com.auth0.jwt.algorithms.Algorithm
+import com.lorenzoog.zipzop.config.auth.password.Argon2PasswordEncoder
+import com.lorenzoog.zipzop.config.auth.password.PasswordEncoder
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI
 import org.kodein.di.DI
@@ -10,6 +12,8 @@ import org.kodein.di.singleton
 @OptIn(KtorExperimentalAPI::class)
 fun authModule(config: ApplicationConfig) =
   DI.Module("Auth module") {
+    bind<PasswordEncoder>() with singleton { Argon2PasswordEncoder() }
+
     bind<Algorithm>() with singleton {
       Algorithm.HMAC256("temp secret")
 //      TODO: use RSA512 instead of HMAC256
