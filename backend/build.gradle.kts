@@ -49,7 +49,7 @@ dependencies {
   implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
   implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 
-  compileOnly("com.h2database:h2:1.4.200") // TODO: remove this, just for local environment
+  runtimeOnly("com.h2database:h2:1.4.200") // TODO: remove this, just for local environment
 
   testImplementation("io.ktor:ktor-server-tests:$ktor_version")
 }
