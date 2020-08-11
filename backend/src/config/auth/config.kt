@@ -7,15 +7,8 @@ import io.ktor.auth.jwt.JWTPrincipal
 import io.ktor.auth.jwt.jwt
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.kodein.di.DI
 import org.kodein.di.instance
-import java.nio.file.Files
-import java.nio.file.Path
-import java.security.KeyFactory
-import java.security.spec.PKCS8EncodedKeySpec
-import java.security.spec.X509EncodedKeySpec
 
 @OptIn(KtorExperimentalAPI::class)
 fun Configuration.setup(di: DI, config: ApplicationConfig) {
