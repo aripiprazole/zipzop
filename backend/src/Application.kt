@@ -12,12 +12,16 @@ import io.ktor.application.install
 import io.ktor.auth.Authentication
 import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
+import io.ktor.http.ContentType
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Locations
 import io.ktor.routing.Routing
+import io.ktor.serialization.json
 import io.ktor.sessions.Sessions
 import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.WebSockets
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
 import org.kodein.di.ktor.DIFeature
 import org.kodein.di.ktor.di
 
@@ -29,9 +33,10 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Application.module(testing: Boolean = false) {
   install(Locations)
-  install(ContentNegotiation)
   install(Sessions)
-
+  install(ContentNegotiation) {
+    json(json = Json(JsonConfiguration.Stable))
+  }
   install(CallLogging) { setup() }
 
   install(DIFeature) { setup(environment.config) }

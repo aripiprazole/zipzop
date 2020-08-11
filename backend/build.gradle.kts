@@ -8,6 +8,7 @@ val exposed_version: String by project
 plugins {
   application
   kotlin("jvm") version "1.3.70"
+  kotlin("plugin.serialization") version "1.3.70"
 }
 
 group = "com.lorenzoog"
@@ -44,6 +45,9 @@ dependencies {
   implementation("io.ktor:ktor-websockets:$ktor_version")
   implementation("io.ktor:ktor-client-websockets:$ktor_version")
   implementation("io.ktor:ktor-client-logging-jvm:$ktor_version")
+  implementation("io.ktor:ktor-serialization:$ktor_version")
+
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0")
 
   implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
   implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
