@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.kodein
+package com.lorenzoog.zipzop.config.di
 
 import com.auth0.jwt.algorithms.Algorithm
 import com.lorenzoog.zipzop.auth.JwtService
@@ -6,19 +6,14 @@ import com.lorenzoog.zipzop.config.auth.password.Argon2PasswordEncoder
 import com.lorenzoog.zipzop.config.auth.password.PasswordEncoder
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI
-import org.kodein.di.DI
-import org.kodein.di.bind
-import org.kodein.di.singleton
+import org.koin.dsl.module
 
 @OptIn(KtorExperimentalAPI::class)
-fun authModule(config: ApplicationConfig) =
-  DI.Module("Auth module") {
-    bind<PasswordEncoder>() with singleton { Argon2PasswordEncoder() }
+fun authModule(config: ApplicationConfig) = module {
+  single<PasswordEncoder> { Argon2PasswordEncoder() }
 
-    bind<JwtService>() with singleton { JwtService(config.config("ktor.jwt"), di) }
-
-    bind<Algorithm>() with singleton {
-      Algorithm.HMAC256("temp secret")
+  single<Algorithm> {
+    Algorithm.HMAC256("temp secret")
 //      TODO: use RSA512 instead of HMAC256
 //      runBlocking<Algorithm> {
 //        val rsaPrivateKeyPath = config.property("key.private").getString()
@@ -30,5 +25,7 @@ fun authModule(config: ApplicationConfig) =
 //
 //        Algorithm.RSA512(privateKey, publicKey)
 //      }
-    }
   }
+
+  single { JwtService(config.config("ktor.jwt")) }
+}

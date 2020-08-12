@@ -13,13 +13,11 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.server.testing.*
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
-import org.kodein.di.bind
-import org.kodein.di.instance
-import org.kodein.di.ktor.di
-import org.kodein.di.singleton
-import org.kodein.di.subDI
+import org.koin.ktor.ext.inject
+import org.koin.ktor.ext.modules
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import org.koin.dsl.module as koinModule
 
 @KtorExperimentalAPI
 class ApplicationTest {
@@ -36,9 +34,9 @@ class ApplicationTest {
       module {
         module(testing = true)
 
-        subDI(di()) {
-          bind<PasswordEncoder>(overrides = true) with singleton { PasswordEncoderMock }
-        }
+        modules(koinModule {
+          single<PasswordEncoder>(override = true) { PasswordEncoderMock }
+        })
       }
     }) {
       block()
@@ -47,9 +45,7 @@ class ApplicationTest {
 
   @Test
   fun testRoot(): Unit = testApp {
-    val di = di { application }
-
-    val userService by di.instance<UserService>()
+    val userService by application.inject<UserService>()
 
     val username = "fake username"
     val password = "fake password"

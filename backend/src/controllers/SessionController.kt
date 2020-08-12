@@ -12,8 +12,7 @@ import io.ktor.locations.post
 import io.ktor.response.respond
 import io.ktor.routing.Routing
 import kotlinx.serialization.Serializable
-import org.kodein.di.instance
-import org.kodein.di.ktor.di
+import org.koin.ktor.ext.inject
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 @Location("/login")
@@ -22,11 +21,9 @@ data class Login(val username: String, val password: String)
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Routing.sessionController() {
-  val di = di()
-
-  val userService by di.instance<UserService>()
-  val passwordEncoder by di.instance<PasswordEncoder>()
-  val jwtService by di.instance<JwtService>()
+  val userService by inject<UserService>()
+  val passwordEncoder by inject<PasswordEncoder>()
+  val jwtService by inject<JwtService>()
 
   post<Login> { credentials ->
     val user = userService.findByUsername(credentials.username)

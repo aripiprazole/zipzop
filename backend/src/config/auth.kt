@@ -4,44 +4,46 @@ import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.lorenzoog.zipzop.entities.User
 import com.lorenzoog.zipzop.services.user.UserService
+import io.ktor.application.Application
+import io.ktor.auth.authentication
 import io.ktor.auth.jwt.JWTPrincipal
 import io.ktor.auth.jwt.jwt
 import io.ktor.config.ApplicationConfig
 import io.ktor.sessions.sessions
 import io.ktor.sessions.set
 import io.ktor.util.KtorExperimentalAPI
-import org.kodein.di.DI
-import org.kodein.di.instance
-import io.ktor.auth.Authentication.Configuration as AuthConfiguration
+import org.koin.ktor.ext.inject
 
 data class UserSession(val user: User)
 
 @OptIn(KtorExperimentalAPI::class)
-fun AuthConfiguration.setup(di: DI, config: ApplicationConfig) {
+fun Application.setupAuthentication(config: ApplicationConfig) {
   val jwtIssuer = config.property("domain").getString()
   val jwtAudience = config.property("audience").getString()
 
-  jwt {
-    realm = config.property("realm").getString()
+  val algorithm by inject<Algorithm>()
+  val userService by inject<UserService>()
 
-    val algorithm by di.instance<Algorithm>()
-    val userService by di.instance<UserService>()
+  authentication {
+    jwt {
+      realm = config.property("realm").getString()
 
-    verifier(
-      JWT.require(algorithm)
-        .withAudience(jwtAudience)
-        .withIssuer(jwtIssuer)
-        .build()
-    )
+      verifier(
+        JWT.require(algorithm)
+          .withAudience(jwtAudience)
+          .withIssuer(jwtIssuer)
+          .build()
+      )
 
-    validate { credentials ->
-      if (credentials.payload.audience.contains(jwtAudience)) {
-        JWTPrincipal(credentials.payload).also {
-          val user = userService.findById(it.payload.subject.toLong())
+      validate { credentials ->
+        if (credentials.payload.audience.contains(jwtAudience)) {
+          JWTPrincipal(credentials.payload).also {
+            val user = userService.findById(it.payload.subject.toLong())
 
-          sessions.set(UserSession(user))
-        }
-      } else null
+            sessions.set(UserSession(user))
+          }
+        } else null
+      }
     }
   }
 }
