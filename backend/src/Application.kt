@@ -38,11 +38,6 @@ val Json = Json(JsonConfiguration.Stable)
 @kotlin.jvm.JvmOverloads
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Application.module(testing: Boolean = false) {
-  // Setup common services
-  setupDatabase(environment.config.config("ktor.database"))
-  setupHttpClient()
-  setupAuthentication(environment.config.config("ktor.jwt"))
-
   // Inject dependencies to the code
   koin {
     modules(
@@ -50,6 +45,11 @@ fun Application.module(testing: Boolean = false) {
       authModule(environment.config.config("ktor.jwt"))
     )
   }
+
+  // Setup common services
+  setupDatabase(environment.config.config("ktor.database"))
+  setupHttpClient()
+  setupAuthentication(environment.config.config("ktor.jwt"))
 
   // Install [Locations] Ktor Experimental Locations API to make easier to read the code
   install(Locations)
