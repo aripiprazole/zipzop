@@ -5,7 +5,7 @@ import com.lorenzoog.zipzop.dto.user.UserUpdateDTO
 import com.lorenzoog.zipzop.entities.User
 
 interface UserService {
- suspend fun create(data: UserCreateDTO): User
+  suspend fun create(data: UserCreateDTO): User
 
   suspend fun findAll(page: Int): Iterable<User>
 

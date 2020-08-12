@@ -43,7 +43,7 @@ fun Routing.sessionController() {
 
     val user = userService.findByUsername(credentials.username)
 
-    if(!passwordEncoder.matches(credentials.password, user.password))
+    if (!passwordEncoder.matches(credentials.password, user.password))
       throw AuthenticationException()
 
     call.respond(LoginResponseDTO(jwtService.encode(user)))
