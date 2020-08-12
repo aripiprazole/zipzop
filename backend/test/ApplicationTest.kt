@@ -24,25 +24,23 @@ import kotlin.test.assertEquals
 @KtorExperimentalAPI
 class ApplicationTest {
   private object PasswordEncoderMock : PasswordEncoder {
-    override fun matches(password: String, hashedPassword: String): Boolean {
-      return true
-    }
+    override fun matches(password: String, hashedPassword: String) = true
 
-    override fun encode(password: String): String {
-      return password
-    }
+    override fun encode(password: String) = password
   }
 
   private fun testApp(block: TestApplicationEngine.() -> Unit) {
     withApplication(createTestEnvironment {
-      config = HoconApplicationConfig(ConfigFactory.load())
-    }) {
-      application.apply {
+      config = HoconApplicationConfig(ConfigFactory.load("test-application"))
+
+      module {
+        module(testing = true)
+
         subDI(di()) {
           bind<PasswordEncoder>(overrides = true) with singleton { PasswordEncoderMock }
         }
       }
-
+    }) {
       block()
     }
   }
