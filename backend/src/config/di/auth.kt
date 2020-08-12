@@ -27,5 +27,5 @@ fun authModule(config: ApplicationConfig) = module {
 //      }
   }
 
-  single { JwtService(config.config("ktor.jwt")) }
+  single { JwtService(config) }
 }
