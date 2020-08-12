@@ -3,7 +3,10 @@ package com.lorenzoog
 import com.lorenzoog.zipzop.Json
 import com.lorenzoog.zipzop.config.auth.password.PasswordEncoder
 import com.lorenzoog.zipzop.controllers.Login
+import com.lorenzoog.zipzop.dto.auth.LoginResponseDTO
 import com.lorenzoog.zipzop.dto.user.UserCreateDTO
+import com.lorenzoog.zipzop.dto.user.UserResponseDTO
+import com.lorenzoog.zipzop.dto.user.toDto
 import com.lorenzoog.zipzop.module
 import com.lorenzoog.zipzop.services.user.UserService
 import com.typesafe.config.ConfigFactory
@@ -12,7 +15,6 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
-import io.ktor.request.contentType
 import io.ktor.server.testing.*
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
@@ -53,12 +55,14 @@ class ApplicationTest {
     val username = "fake username"
     val password = "fake password"
 
-    runBlocking {
+    val user = runBlocking {
       userService.create(UserCreateDTO(
         username,
         password
       ))
     }
+
+    lateinit var token: LoginResponseDTO
 
     handleRequest(HttpMethod.Post, "/login") {
       addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
@@ -71,9 +75,16 @@ class ApplicationTest {
     }.apply {
       assertEquals(HttpStatusCode.OK, response.status())
 
-      println(response.content)
+      token = Json.parse(LoginResponseDTO.serializer(), response.content.toString())
+    }
 
-      // TODO: make a request to an authenticated endpoint to test the jwt
+    handleRequest(HttpMethod.Get, "/session") {
+      addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+      addHeader(HttpHeaders.Accept, ContentType.Application.Json.toString())
+      addHeader(HttpHeaders.Authorization, token.jwt)
+    }.apply {
+      assertEquals(HttpStatusCode.OK, response.status())
+      assertEquals(Json.stringify(UserResponseDTO.serializer(), user.toDto()), response.content)
     }
   }
 }
