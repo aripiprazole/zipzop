@@ -4,6 +4,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val exposed_version: String by project
+val koin_version: String by project
 
 plugins {
   application
@@ -53,11 +54,13 @@ dependencies {
   implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
   implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 
-  implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:7.0.0")
+  implementation("org.koin:koin-core:$koin_version")
+  implementation("org.koin:koin-ktor:$koin_version")
 
   runtimeOnly("com.h2database:h2:1.4.200") // TODO: remove this, just for local environment
 
   testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+  testImplementation("org.koin:koin-test:$koin_version")
 }
 
 tasks.withType<KotlinCompile>() {

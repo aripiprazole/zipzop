@@ -6,19 +6,15 @@ import com.lorenzoog.zipzop.entities.User
 import com.lorenzoog.zipzop.services.user.UserService
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI
-import org.kodein.di.DI
-import org.kodein.di.DIAware
-import org.kodein.di.instance
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 import java.time.Instant
 import java.util.*
 
 @OptIn(KtorExperimentalAPI::class)
-class JwtService(
-  private val config: ApplicationConfig,
-  override val di: DI
-) : DIAware {
-  private val algorithm by di.instance<Algorithm>()
-  private val userService by di.instance<UserService>()
+class JwtService(private val config: ApplicationConfig) : KoinComponent {
+  private val algorithm by inject<Algorithm>()
+  private val userService by inject<UserService>()
 
   fun encode(user: User): String =
     JWT.create()

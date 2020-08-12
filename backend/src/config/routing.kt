@@ -12,7 +12,7 @@ import io.ktor.response.respond
 import io.ktor.routing.Routing
 
 @OptIn(KtorExperimentalLocationsAPI::class)
-fun Routing.setup() {
+fun Routing.setupMainRouter() {
   sessionController()
 
   install(StatusPages) {

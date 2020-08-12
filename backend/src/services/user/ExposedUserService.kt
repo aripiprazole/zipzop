@@ -9,12 +9,11 @@ import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Op
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
-import org.kodein.di.DI
-import org.kodein.di.DIAware
-import org.kodein.di.instance
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class ExposedUserService(override val di: DI) : UserService, DIAware {
-  private val passwordEncoder by di.instance<PasswordEncoder>()
+class ExposedUserService : UserService, KoinComponent {
+  private val passwordEncoder by inject<PasswordEncoder>()
 
   override suspend fun create(data: UserCreateDTO) = newSuspendedTransaction {
     User.new {
