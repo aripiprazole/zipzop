@@ -1,11 +1,8 @@
 package com.lorenzoog.zipzop
 
+import com.lorenzoog.zipzop.config.*
 import com.lorenzoog.zipzop.config.di.authModule
 import com.lorenzoog.zipzop.config.di.mainModule
-import com.lorenzoog.zipzop.config.setupMainRouter
-import com.lorenzoog.zipzop.config.setupAuthentication
-import com.lorenzoog.zipzop.config.setupDatabase
-import com.lorenzoog.zipzop.config.setupHttpClient
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
@@ -17,7 +14,6 @@ import io.ktor.locations.Locations
 import io.ktor.request.path
 import io.ktor.routing.routing
 import io.ktor.serialization.json
-import io.ktor.sessions.Sessions
 import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.WebSockets
 import kotlinx.serialization.json.Json
@@ -50,12 +46,10 @@ fun Application.module(testing: Boolean = false) {
   setupDatabase(environment.config.config("ktor.database"))
   setupHttpClient()
   setupAuthentication(environment.config.config("ktor.jwt"))
+  setupSessions()
 
   // Install [Locations] Ktor Experimental Locations API to make easier to read the code
   install(Locations)
-
-  // Install [Sessions] API to make easier to work with sessions
-  install(Sessions)
 
   // Install [ContentNegotiation] with local [Json]
   install(ContentNegotiation) {
