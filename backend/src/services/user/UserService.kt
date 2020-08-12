@@ -15,5 +15,5 @@ interface UserService {
   suspend fun updateById(id: Long, newData: UserUpdateDTO): User
   suspend fun updateByUsername(username: String, newData: UserUpdateDTO): User
 
-  suspend fun deleteById(id: Long): User
+  suspend fun deleteById(id: Long)
 }

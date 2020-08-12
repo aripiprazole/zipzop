@@ -14,7 +14,7 @@ const val MAIN_MODULE_NAME = "Main module"
 @OptIn(KtorExperimentalAPI::class)
 fun MainBuilder.setup(config: ApplicationConfig) {
   import(DI.Module(MAIN_MODULE_NAME) {
-    bind<UserService>() with singleton { ExposedUserService() }
+    bind<UserService>() with singleton { ExposedUserService(di) }
   })
   import(authModule(config.config("ktor.jwt")))
 }
