@@ -58,7 +58,7 @@ class ApplicationTest {
     }
 
     handleRequest(HttpMethod.Post, "/login") {
-      setBody(Json.stringify(Login.serializer(), Login(
+      setBody(Json.stringify(Login.Body.serializer(), Login.Body(
         username,
         password
       )))

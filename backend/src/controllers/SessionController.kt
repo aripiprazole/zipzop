@@ -9,6 +9,7 @@ import io.ktor.application.call
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Location
 import io.ktor.locations.post
+import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.Routing
 import kotlinx.serialization.Serializable
@@ -16,8 +17,12 @@ import org.koin.ktor.ext.inject
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 @Location("/login")
-@Serializable
-data class Login(val username: String, val password: String)
+class Login {
+
+  @Serializable
+  data class Body(val username: String, val password: String)
+
+}
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Routing.sessionController() {
@@ -25,7 +30,9 @@ fun Routing.sessionController() {
   val passwordEncoder by inject<PasswordEncoder>()
   val jwtService by inject<JwtService>()
 
-  post<Login> { credentials ->
+  post<Login> {
+    val credentials = call.receive<Login.Body>()
+
     val user = userService.findByUsername(credentials.username)
 
     if(!passwordEncoder.matches(credentials.password, user.password))
