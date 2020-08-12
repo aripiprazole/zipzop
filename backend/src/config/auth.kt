@@ -14,8 +14,6 @@ import io.ktor.sessions.set
 import io.ktor.util.KtorExperimentalAPI
 import org.koin.ktor.ext.inject
 
-data class UserSession(val user: User)
-
 @OptIn(KtorExperimentalAPI::class)
 fun Application.setupAuthentication(config: ApplicationConfig) {
   val jwtIssuer = config.property("domain").getString()
