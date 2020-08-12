@@ -2,6 +2,8 @@ package com.lorenzoog.zipzop.auth
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import com.auth0.jwt.exceptions.JWTDecodeException
+import com.lorenzoog.zipzop.AuthorizationException
 import com.lorenzoog.zipzop.entities.User
 import com.lorenzoog.zipzop.services.user.UserService
 import io.ktor.config.ApplicationConfig
@@ -21,5 +23,12 @@ class JwtService(private val config: ApplicationConfig) : KoinComponent {
       .withAudience(config.property("audience").getString())
       .withIssuer(config.property("issuer").getString())
       .withIssuedAt(Date.from(Instant.now()))
+      .withSubject(user.id.toString())
       .sign(algorithm)
+
+  suspend fun decodeToUser(jwt: String): User = try {
+    JWT.decode(jwt).subject.toLong().let { id -> userService.findById(id) }
+  } catch (exception: JWTDecodeException) {
+    throw AuthorizationException()
+  }
 }
