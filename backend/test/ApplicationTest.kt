@@ -8,8 +8,11 @@ import com.lorenzoog.zipzop.module
 import com.lorenzoog.zipzop.services.user.UserService
 import com.typesafe.config.ConfigFactory
 import io.ktor.config.HoconApplicationConfig
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
+import io.ktor.request.contentType
 import io.ktor.server.testing.*
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
@@ -58,6 +61,9 @@ class ApplicationTest {
     }
 
     handleRequest(HttpMethod.Post, "/login") {
+      addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+      addHeader(HttpHeaders.Accept, ContentType.Application.Json.toString())
+
       setBody(Json.stringify(Login.Body.serializer(), Login.Body(
         username,
         password
