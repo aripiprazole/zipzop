@@ -45,11 +45,11 @@ class UserSessionTracker : SessionTracker<UserSession>, KoinComponent {
   }
 
   override suspend fun load(call: ApplicationCall, transport: String?) = runCatching {
-    UserSession(jwtService.decodeToUser(transport.toString()))
+    UserSession(jwtService.transformJwtToUser(transport.toString()))
   }.getOrNull()
 
   override suspend fun store(call: ApplicationCall, value: UserSession): String {
-    return jwtService.encode(value.user)
+    return jwtService.transformUserToJwt(value.user)
   }
 
   override fun validate(value: UserSession) = Unit // nothing to do

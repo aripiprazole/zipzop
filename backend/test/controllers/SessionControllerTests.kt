@@ -60,7 +60,7 @@ class SessionControllerTests {
 
       assertEquals(HttpStatusCode.OK, response.status())
       assertEquals(user.id, runBlocking {
-        jwtService.decodeToUser(token.jwt).id
+        jwtService.transformJwtToUser(token.jwt).id
       })
     }
   }
@@ -77,7 +77,7 @@ class SessionControllerTests {
       ))
     }
 
-    val token = jwtService.encode(user)
+    val token = jwtService.transformUserToJwt(user)
 
     handleRequest(HttpMethod.Get, "/session") {
       addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
