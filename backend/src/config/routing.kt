@@ -4,6 +4,7 @@ import com.lorenzoog.zipzop.AuthenticationException
 import com.lorenzoog.zipzop.AuthorizationException
 import com.lorenzoog.zipzop.controllers.sessionController
 import com.lorenzoog.zipzop.dto.exceptions.ExceptionDTO
+import com.lorenzoog.zipzop.exceptions.UniqueFieldViolationException
 import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.StatusPages
@@ -38,6 +39,10 @@ fun Routing.setupMainRouter() {
 
     exception<EntityNotFoundException> {
       call.respond(HttpStatusCode.NotFound, ExceptionDTO("Not found the requested entity"))
+    }
+
+    exception<UniqueFieldViolationException> { cause ->
+      call.respond(HttpStatusCode.Conflict, ExceptionDTO(cause.message.toString()))
     }
   }
 }
