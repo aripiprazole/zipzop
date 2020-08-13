@@ -46,7 +46,7 @@ fun Routing.sessionController() {
     if (!passwordEncoder.matches(credentials.password, user.password))
       throw AuthenticationException()
 
-    call.respond(LoginResponseDTO(jwtService.encode(user)))
+    call.respond(LoginResponseDTO(jwtService.transformUserToJwt(user)))
   }
 
   get<Session> {

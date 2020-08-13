@@ -18,7 +18,7 @@ class JwtService(private val config: ApplicationConfig) : KoinComponent {
   private val algorithm by inject<Algorithm>()
   private val userService by inject<UserService>()
 
-  fun encode(user: User): String =
+  fun transformUserToJwt(user: User): String =
     JWT.create()
       .withAudience(config.property("audience").getString())
       .withIssuer(config.property("issuer").getString())
@@ -26,7 +26,7 @@ class JwtService(private val config: ApplicationConfig) : KoinComponent {
       .withSubject(user.id.toString())
       .sign(algorithm)
 
-  suspend fun decodeToUser(jwt: String): User = try {
+  suspend fun transformJwtToUser(jwt: String): User = try {
     JWT.decode(jwt).subject.toLong().let { id -> userService.findById(id) }
   } catch (exception: JWTDecodeException) {
     throw AuthorizationException()
