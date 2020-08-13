@@ -79,5 +79,3 @@ fun Application.module(testing: Boolean = false) {
 class AuthenticationException : RuntimeException()
 class AuthorizationException : RuntimeException()
 
-data class JsonSampleClass(val hello: String)
-
