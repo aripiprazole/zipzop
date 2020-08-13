@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.auth.password
+package com.lorenzoog.zipzop.auth.password
 
 class Argon2PasswordEncoder : PasswordEncoder {
   override fun matches(password: String, hashedPassword: String): Boolean {

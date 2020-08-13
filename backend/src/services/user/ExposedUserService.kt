@@ -1,6 +1,6 @@
 package com.lorenzoog.zipzop.services.user
 
-import com.lorenzoog.zipzop.config.auth.password.PasswordEncoder
+import com.lorenzoog.zipzop.auth.password.PasswordEncoder
 import com.lorenzoog.zipzop.dto.user.UserCreateDTO
 import com.lorenzoog.zipzop.dto.user.UserUpdateDTO
 import com.lorenzoog.zipzop.entities.User
