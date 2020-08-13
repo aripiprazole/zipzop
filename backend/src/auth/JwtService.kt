@@ -27,7 +27,7 @@ class JwtService(private val config: ApplicationConfig) : KoinComponent {
       .sign(algorithm)
 
   suspend fun transformJwtToUser(jwt: String): User = try {
-    JWT.decode(jwt).subject.toLong().let { id -> userService.findById(id) }
+    userService.findById(JWT.decode(jwt).subject.toLong())
   } catch (exception: JWTDecodeException) {
     throw AuthorizationException()
   }
