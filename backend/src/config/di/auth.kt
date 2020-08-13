@@ -13,7 +13,7 @@ fun authModule(config: ApplicationConfig) = module {
   single<PasswordEncoder> { Argon2PasswordEncoder() }
 
   single<Algorithm> {
-    Algorithm.HMAC256("temp secret")
+    Algorithm.HMAC256(config.propertyOrNull("secret")?.getString().orEmpty())
 //      TODO: use RSA512 instead of HMAC256
 //      runBlocking<Algorithm> {
 //        val rsaPrivateKeyPath = config.property("key.private").getString()
