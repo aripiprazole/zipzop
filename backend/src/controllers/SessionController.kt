@@ -1,6 +1,6 @@
 package com.lorenzoog.zipzop.controllers
 
-import com.lorenzoog.zipzop.AuthenticationException
+import com.lorenzoog.zipzop.exceptions.AuthenticationException
 import com.lorenzoog.zipzop.auth.JwtService
 import com.lorenzoog.zipzop.auth.password.PasswordEncoder
 import com.lorenzoog.zipzop.dto.auth.LoginResponseDTO

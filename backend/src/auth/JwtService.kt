@@ -3,7 +3,7 @@ package com.lorenzoog.zipzop.auth
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.exceptions.JWTDecodeException
-import com.lorenzoog.zipzop.AuthorizationException
+import com.lorenzoog.zipzop.exceptions.AuthorizationException
 import com.lorenzoog.zipzop.entities.User
 import com.lorenzoog.zipzop.services.user.UserService
 import io.ktor.config.ApplicationConfig

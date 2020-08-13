@@ -75,7 +75,3 @@ fun Application.module(testing: Boolean = false) {
     setupMainRouter()
   }
 }
-
-class AuthenticationException : RuntimeException()
-class AuthorizationException : RuntimeException()
-

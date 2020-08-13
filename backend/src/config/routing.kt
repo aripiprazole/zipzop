@@ -1,7 +1,7 @@
 package com.lorenzoog.zipzop.config
 
-import com.lorenzoog.zipzop.AuthenticationException
-import com.lorenzoog.zipzop.AuthorizationException
+import com.lorenzoog.zipzop.exceptions.AuthenticationException
+import com.lorenzoog.zipzop.exceptions.AuthorizationException
 import com.lorenzoog.zipzop.controllers.sessionController
 import com.lorenzoog.zipzop.dto.exceptions.ExceptionDTO
 import com.lorenzoog.zipzop.exceptions.EntityNotFoundException
