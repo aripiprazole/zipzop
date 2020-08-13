@@ -27,9 +27,10 @@ repositories {
 }
 
 dependencies {
+  implementation(project(":logger"))
+
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
   implementation("io.ktor:ktor-server-netty:$ktor_version")
-  implementation("ch.qos.logback:logback-classic:$logback_version")
   implementation("io.ktor:ktor-server-core:$ktor_version")
   implementation("io.ktor:ktor-locations:$ktor_version")
   implementation("io.ktor:ktor-server-host-common:$ktor_version")
@@ -58,8 +59,6 @@ dependencies {
 
   implementation("org.koin:koin-core:$koin_version")
   implementation("org.koin:koin-ktor:$koin_version")
-
-  implementation("org.fusesource.jansi:jansi:1.18")
 
   runtimeOnly("com.h2database:h2:1.4.200") // TODO: remove this, just for local environment
 
