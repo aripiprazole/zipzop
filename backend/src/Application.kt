@@ -37,13 +37,13 @@ fun Application.module() {
   koin {
     modules(
       mainModule(),
-      authModule(environment.config.config("ktor.jwt"))
+      authModule(environment.config.config("jwt"))
     )
   }
 
   // Setup common services
-  setupDatabase(environment.config.config("ktor.database"))
-  setupAuthentication(environment.config.config("ktor.jwt"))
+  setupDatabase(environment.config.config("database"))
+  setupAuthentication(environment.config.config("jwt"))
   setupSessions()
 
   // Install [Locations] Ktor Experimental Locations API to make easier to read the code
