@@ -5,10 +5,9 @@ import com.lorenzoog.zipzop.dto.user.UserCreateDTO
 import com.lorenzoog.zipzop.dto.user.UserDTO
 import com.lorenzoog.zipzop.dto.user.UserUpdateDTO
 import com.lorenzoog.zipzop.entities.User
-import com.lorenzoog.zipzop.tables.Users
+import com.lorenzoog.zipzop.exceptions.EntityNotFoundException
 import com.lorenzoog.zipzop.exceptions.UniqueFieldViolationException
-import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
-import org.jetbrains.exposed.dao.id.EntityID
+import com.lorenzoog.zipzop.tables.Users
 import org.jetbrains.exposed.sql.Op
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.koin.core.KoinComponent
@@ -36,11 +35,11 @@ class ExposedUserService : UserService, KoinComponent {
   override suspend fun findByUsername(username: String) = newSuspendedTransaction {
     User.find { Users.username eq username }
       .limit(1)
-      .firstOrNull() ?: throw EntityNotFoundException(EntityID(0.toLong(), Users), User)
+      .firstOrNull() ?: throw EntityNotFoundException("Not found entity with username $username")
   }
 
   override suspend fun findById(id: Long) = newSuspendedTransaction {
-    User.findById(id) ?: throw EntityNotFoundException(EntityID(id, Users), User)
+    User.findById(id) ?: throw EntityNotFoundException("Not found entity with id $id")
   }
 
   override suspend fun updateById(id: Long, newData: UserUpdateDTO) = newSuspendedTransaction {
