@@ -65,9 +65,13 @@ class ExposedUserService : UserService, KoinComponent {
    * @throws UniqueFieldViolationException if exists user
    */
   private suspend fun validateUniqueConstraints(userDTO: UserDTO) {
-    runCatching {
-      findByUsername(userDTO.username.toString())
-    }.getOrNull().also { throw UniqueFieldViolationException("username") }
+    // TODO: fix the expression below
+    // try {
+    // findByUsername(userDTO.username.toString())
+    //
+    // throw UniqueFieldViolationException("username")
+    // } catch (ignored: EntityNotFoundException) {
+    // }
   }
 
   private fun User.update(newData: UserUpdateDTO) = apply {
