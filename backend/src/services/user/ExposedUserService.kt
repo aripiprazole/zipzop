@@ -2,9 +2,11 @@ package com.lorenzoog.zipzop.services.user
 
 import com.lorenzoog.zipzop.auth.password.PasswordEncoder
 import com.lorenzoog.zipzop.dto.user.UserCreateDTO
+import com.lorenzoog.zipzop.dto.user.UserDTO
 import com.lorenzoog.zipzop.dto.user.UserUpdateDTO
 import com.lorenzoog.zipzop.entities.User
 import com.lorenzoog.zipzop.tables.Users
+import com.lorenzoog.zipzop.exceptions.UniqueFieldViolationException
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Op
@@ -16,6 +18,8 @@ class ExposedUserService : UserService, KoinComponent {
   private val passwordEncoder by inject<PasswordEncoder>()
 
   override suspend fun create(data: UserCreateDTO) = newSuspendedTransaction {
+    validateUniqueConstraints(data)
+
     User.new {
       username = data.username
       password = passwordEncoder.encode(data.password)
@@ -40,15 +44,31 @@ class ExposedUserService : UserService, KoinComponent {
   }
 
   override suspend fun updateById(id: Long, newData: UserUpdateDTO) = newSuspendedTransaction {
+    validateUniqueConstraints(newData)
+
     findById(id).update(newData)
   }
 
   override suspend fun updateByUsername(username: String, newData: UserUpdateDTO) = newSuspendedTransaction {
+    validateUniqueConstraints(newData)
+
     findByUsername(username).update(newData)
   }
 
   override suspend fun deleteById(id: Long) = newSuspendedTransaction {
     findById(id).delete()
+  }
+
+  /**
+   * Checks if exists an user in database with that unique constraints, and
+   * if exists, will throw [UniqueFieldViolationException]
+   *
+   * @throws UniqueFieldViolationException if exists user
+   */
+  private suspend fun validateUniqueConstraints(userDTO: UserDTO) {
+    runCatching {
+      findByUsername(userDTO.username.toString())
+    }.getOrNull().also { throw UniqueFieldViolationException("username") }
   }
 
   private fun User.update(newData: UserUpdateDTO) = apply {
