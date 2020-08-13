@@ -59,6 +59,8 @@ dependencies {
   implementation("org.koin:koin-core:$koin_version")
   implementation("org.koin:koin-ktor:$koin_version")
 
+  implementation("org.fusesource.jansi:jansi:1.18")
+
   runtimeOnly("com.h2database:h2:1.4.200") // TODO: remove this, just for local environment
 
   testImplementation("io.ktor:ktor-server-tests:$ktor_version")
