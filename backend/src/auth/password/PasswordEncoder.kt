@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.config.auth.password
+package com.lorenzoog.zipzop.auth.password
 
 interface PasswordEncoder {
 

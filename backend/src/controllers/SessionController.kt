@@ -2,7 +2,7 @@ package com.lorenzoog.zipzop.controllers
 
 import com.lorenzoog.zipzop.AuthenticationException
 import com.lorenzoog.zipzop.auth.JwtService
-import com.lorenzoog.zipzop.config.auth.password.PasswordEncoder
+import com.lorenzoog.zipzop.auth.password.PasswordEncoder
 import com.lorenzoog.zipzop.dto.auth.LoginResponseDTO
 import com.lorenzoog.zipzop.dto.user.toDto
 import com.lorenzoog.zipzop.services.user.UserService
