@@ -44,7 +44,6 @@ fun Application.module(testing: Boolean = false) {
 
   // Setup common services
   setupDatabase(environment.config.config("ktor.database"))
-  setupHttpClient()
   setupAuthentication(environment.config.config("ktor.jwt"))
   setupSessions()
 
