@@ -4,6 +4,7 @@ import com.lorenzoog.zipzop.AuthenticationException
 import com.lorenzoog.zipzop.AuthorizationException
 import com.lorenzoog.zipzop.controllers.sessionController
 import com.lorenzoog.zipzop.dto.exceptions.ExceptionDTO
+import com.lorenzoog.zipzop.exceptions.EntityNotFoundException
 import com.lorenzoog.zipzop.exceptions.UniqueFieldViolationException
 import io.ktor.application.call
 import io.ktor.application.install
@@ -14,7 +15,6 @@ import io.ktor.response.respond
 import io.ktor.routing.Routing
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonDecodingException
-import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Routing.setupMainRouter() {
@@ -37,8 +37,8 @@ fun Routing.setupMainRouter() {
       call.respond(HttpStatusCode.BadRequest, ExceptionDTO(cause.message.toString()))
     }
 
-    exception<EntityNotFoundException> {
-      call.respond(HttpStatusCode.NotFound, ExceptionDTO("Not found the requested entity"))
+    exception<EntityNotFoundException> { cause ->
+      call.respond(HttpStatusCode.NotFound, ExceptionDTO(cause.message))
     }
 
     exception<UniqueFieldViolationException> { cause ->
