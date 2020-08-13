@@ -54,6 +54,8 @@ dependencies {
   implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
   implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 
+  implementation("de.mkammerer:argon2-jvm:2.7")
+
   implementation("org.koin:koin-core:$koin_version")
   implementation("org.koin:koin-ktor:$koin_version")
 
