@@ -31,9 +31,8 @@ val Json = Json(JsonConfiguration.Stable)
 
 @Suppress("unused") // Referenced in application.conf
 @KtorExperimentalAPI
-@kotlin.jvm.JvmOverloads
 @OptIn(KtorExperimentalLocationsAPI::class)
-fun Application.module(testing: Boolean = false) {
+fun Application.module() {
   // Inject dependencies to the code
   koin {
     modules(

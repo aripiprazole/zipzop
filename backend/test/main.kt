@@ -16,7 +16,7 @@ fun withMocksApplication(mocks: ModuleDeclaration): (TestApplicationEngine.() ->
     config = HoconApplicationConfig(ConfigFactory.load("test-application"))
 
     module {
-      module(testing = true)
+      module()
 
       modules(org.koin.dsl.module(moduleDeclaration = mocks))
     }
