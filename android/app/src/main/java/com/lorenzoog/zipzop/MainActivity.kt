@@ -1,16 +1,20 @@
 package com.lorenzoog.zipzop
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.Composable
+import androidx.compose.Providers
 import androidx.ui.core.setContent
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.tooling.preview.Preview
+import com.lorenzoog.zipzop.ui.Navigation
+import com.lorenzoog.zipzop.ui.NavigationViewModel
 import com.lorenzoog.zipzop.ui.ZipZopTheme
 import com.lorenzoog.zipzop.ui.components.app.App
 
 class MainActivity : AppCompatActivity() {
+  private val navigationViewModel by viewModels<NavigationViewModel>()
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
@@ -18,17 +22,11 @@ class MainActivity : AppCompatActivity() {
       ZipZopTheme {
         // A surface container using the 'background' color from the theme
         Surface(color = MaterialTheme.colors.background) {
-          App()
+          Providers(Navigation provides navigationViewModel) {
+            App()
+          }
         }
       }
     }
-  }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-  ZipZopTheme {
-    App()
   }
 }
