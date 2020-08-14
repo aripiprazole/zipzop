@@ -1,5 +1,6 @@
 package com.lorenzoog.zipzop.config
 
+import com.lorenzoog.zipzop.controllers.messageController
 import com.lorenzoog.zipzop.exceptions.AuthenticationException
 import com.lorenzoog.zipzop.exceptions.AuthorizationException
 import com.lorenzoog.zipzop.controllers.sessionController
@@ -19,6 +20,7 @@ import kotlinx.serialization.json.JsonDecodingException
 @OptIn(KtorExperimentalLocationsAPI::class)
 fun Routing.setupMainRouter() {
   sessionController()
+  messageController()
 
   install(StatusPages) {
     exception<AuthenticationException> {
