@@ -50,7 +50,7 @@ dependencies {
   implementation 'androidx.core:core-ktx:1.5.0-alpha01'
   implementation 'com.google.android.material:material:1.2.0'
   implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-alpha06"
-  androidTestImplementation 'junit:junit:4.13'
+  testImplementation 'junit:junit:4.13'
   androidTestImplementation 'androidx.test:rules:1.2.0'
   androidTestImplementation 'androidx.test:runner:1.2.0'
   androidTestImplementation "androidx.ui:ui-test:$compose_version"
