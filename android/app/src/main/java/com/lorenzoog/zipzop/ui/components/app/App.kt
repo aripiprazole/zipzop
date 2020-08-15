@@ -6,6 +6,7 @@ import androidx.ui.foundation.Text
 import androidx.ui.layout.Column
 import com.lorenzoog.zipzop.ui.Navigation
 import com.lorenzoog.zipzop.ui.Screen
+import com.lorenzoog.zipzop.ui.screens.loginscreen.LoginScreen
 
 @Composable
 fun App() {
@@ -13,9 +14,7 @@ fun App() {
 
   Crossfade(navigation.currentScreen) { screen ->
     when (screen) {
-      Screen.Home -> Column {
-        Text("Hi there, this is the home screen")
-      }
+      Screen.Login, Screen.Home -> LoginScreen()
 
       else -> TODO()
     }
