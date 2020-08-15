@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.ui.components.app
+package com.lorenzoog.zipzop.ui
 
 import androidx.compose.Composable
 import androidx.ui.animation.Crossfade
