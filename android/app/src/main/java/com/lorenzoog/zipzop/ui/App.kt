@@ -2,10 +2,6 @@ package com.lorenzoog.zipzop.ui
 
 import androidx.compose.Composable
 import androidx.ui.animation.Crossfade
-import androidx.ui.foundation.Text
-import androidx.ui.layout.Column
-import com.lorenzoog.zipzop.ui.Navigation
-import com.lorenzoog.zipzop.ui.Screen
 import com.lorenzoog.zipzop.ui.screens.loginscreen.LoginScreen
 
 @Composable
