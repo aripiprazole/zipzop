@@ -117,7 +117,6 @@ private fun LoginButton(username: String, password: String) {
   Button(
     modifier = Modifier
       .defaultMinSizeConstraints(300.dp)
-      .weight(100f, fill = false)
       .gravity(Alignment.CenterHorizontally),
     padding = InnerPadding(all = 12.dp),
     shape = RoundedCornerShape(50),
@@ -140,7 +139,6 @@ private fun RegisterButton() {
   OutlinedButton(
     modifier = Modifier
       .defaultMinSizeConstraints(300.dp)
-      .weight(100f, fill = false)
       .gravity(Alignment.CenterHorizontally),
     border = Border(1.5.dp, MaterialTheme.colors.primary),
     contentColor = MaterialTheme.colors.primary,
