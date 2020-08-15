@@ -48,7 +48,7 @@ fun Screen.toBundle() = bundleOf(SIS_NAME to name.sysName)
 
 val Navigation = ambientOf<NavigationViewModel> { error("Nothing set for navigation view model.") }
 
-class NavigationViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+class NavigationViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
   var currentScreen by savedStateHandle.getMutableStateOf<Screen>(
     key = SIS_NAME,
     default = Screen.Home,
