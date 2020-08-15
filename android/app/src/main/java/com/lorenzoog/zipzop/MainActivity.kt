@@ -10,7 +10,7 @@ import androidx.ui.material.Surface
 import com.lorenzoog.zipzop.ui.Navigation
 import com.lorenzoog.zipzop.ui.NavigationViewModel
 import com.lorenzoog.zipzop.ui.ZipZopTheme
-import com.lorenzoog.zipzop.ui.components.app.App
+import com.lorenzoog.zipzop.ui.App
 
 class MainActivity : AppCompatActivity() {
   private val navigationViewModel by viewModels<NavigationViewModel>()
