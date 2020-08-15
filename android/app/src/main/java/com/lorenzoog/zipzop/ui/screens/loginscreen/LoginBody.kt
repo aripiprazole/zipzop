@@ -4,13 +4,11 @@ import androidx.compose.Composable
 import androidx.compose.getValue
 import androidx.compose.setValue
 import androidx.compose.state
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
-import androidx.ui.core.*
+import androidx.ui.core.Alignment
+import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.asImageAsset
 import androidx.ui.input.ImeAction
 import androidx.ui.input.KeyboardType
 import androidx.ui.input.PasswordVisualTransformation
@@ -25,7 +23,6 @@ import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.TextUnit
 import androidx.ui.unit.dp
-import com.lorenzoog.zipzop.R
 
 @Composable
 fun LoginBody() {

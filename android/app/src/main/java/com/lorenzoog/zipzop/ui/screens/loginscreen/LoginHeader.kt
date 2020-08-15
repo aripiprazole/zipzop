@@ -8,7 +8,6 @@ import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.drawBackground
-import androidx.ui.graphics.Color
 import androidx.ui.graphics.asImageAsset
 import androidx.ui.layout.*
 import androidx.ui.material.MaterialTheme
