@@ -6,7 +6,7 @@ buildscript {
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
   }
 
-  val kotlinVersion = "1.4.0-rc"
+  val kotlinVersion = "1.3.70"
 
   dependencies {
     classpath("com.android.tools.build:gradle:4.2.0-alpha07")

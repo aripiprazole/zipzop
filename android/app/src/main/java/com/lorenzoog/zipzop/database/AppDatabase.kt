@@ -1,17 +1,29 @@
 package com.lorenzoog.zipzop.database
 
-import androidx.room.Database
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.RoomDatabase
+import android.content.Context
+import androidx.compose.ambientOf
+import androidx.room.*
 
 @Entity
 data class Contact(
   @PrimaryKey val id: Long
 )
 
+val AppDatabaseAmbient = ambientOf<AppDatabase>()
+
 @Database(
   entities = [Contact::class],
   version = 1
 )
-abstract class AppDatabase : RoomDatabase()
+abstract class AppDatabase : RoomDatabase() {
+  companion object {
+    private val databaseClass = AppDatabase::class.java
+    private const val databaseName = "app.db"
+
+    fun getDatabase(context: Context) = Room.databaseBuilder(
+      context,
+      databaseClass,
+      databaseName
+    ).build()
+  }
+}

@@ -4,7 +4,7 @@ plugins {
   kotlin("kapt")
 }
 
-val kotlinVersion = "1.4.0-rc"
+val kotlinVersion = "1.3.70"
 val composeVersion = "0.1.0-dev13"
 val roomVersion = "2.2.5"
 
@@ -47,8 +47,8 @@ android {
 
     composeOptions {
       kotlinCompilerExtensionVersion = composeVersion
-//      kotlinCompilerVersion = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
-      kotlinCompilerVersion = kotlinVersion
+      kotlinCompilerVersion = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+//      kotlinCompilerVersion = kotlinVersion
     }
   }
 

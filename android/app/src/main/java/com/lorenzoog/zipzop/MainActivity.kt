@@ -7,6 +7,8 @@ import androidx.compose.Providers
 import androidx.ui.core.setContent
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
+import com.lorenzoog.zipzop.database.AppDatabase
+import com.lorenzoog.zipzop.database.AppDatabaseAmbient
 import com.lorenzoog.zipzop.ui.App
 import com.lorenzoog.zipzop.ui.Navigation
 import com.lorenzoog.zipzop.ui.NavigationViewModel
@@ -22,7 +24,10 @@ class MainActivity : AppCompatActivity() {
       ZipZopTheme {
         // A surface container using the 'background' color from the theme
         Surface(color = MaterialTheme.colors.background) {
-          Providers(Navigation provides navigationViewModel) {
+          Providers(
+            Navigation provides navigationViewModel,
+            AppDatabaseAmbient provides AppDatabase.getDatabase(applicationContext)
+          ) {
             App()
           }
         }
