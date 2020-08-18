@@ -1,17 +1,17 @@
 package com.lorenzoog.zipzop.ui.screens.loginscreen
 
-import androidx.compose.Composable
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageAsset
+import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.ui.core.Alignment
-import androidx.ui.core.ContextAmbient
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Image
-import androidx.ui.foundation.drawBackground
-import androidx.ui.graphics.asImageAsset
-import androidx.ui.layout.*
-import androidx.ui.material.MaterialTheme
-import androidx.ui.unit.dp
 import com.lorenzoog.zipzop.R
 
 @Composable
@@ -23,7 +23,7 @@ fun LoginHeader() {
 
   Column(
     modifier = Modifier
-      .drawBackground(MaterialTheme.colors.primary)
+      .background(MaterialTheme.colors.primary)
       .fillMaxWidth()
       .heightIn(
         minHeight = 200.dp,

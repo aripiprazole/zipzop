@@ -1,18 +1,14 @@
 package com.lorenzoog.zipzop.ui
 
-import androidx.compose.Composable
-import androidx.ui.animation.Crossfade
+import androidx.compose.runtime.Composable
+import com.github.zsoltk.compose.router.Router
 import com.lorenzoog.zipzop.ui.screens.loginscreen.LoginScreen
 
 @Composable
-fun App() {
-  val navigation = Navigation.current
-
-  Crossfade(navigation.currentScreen) { screen ->
-    when (screen) {
-      Screen.Login, Screen.Home -> LoginScreen()
-
-      else -> TODO()
+fun App(screen: Screen = Screen.Home) {
+  Router(screen) { backStack ->
+    when(val routing = backStack.last()) {
+      is Screen.Home -> LoginScreen()
     }
   }
 }
