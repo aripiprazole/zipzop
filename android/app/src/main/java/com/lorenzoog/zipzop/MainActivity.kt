@@ -2,6 +2,7 @@ package com.lorenzoog.zipzop
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Providers
@@ -14,6 +15,7 @@ import com.lorenzoog.zipzop.ui.ZipZopTheme
 class MainActivity : AppCompatActivity() {
   private val backPressHandler = BackPressHandler()
 
+  @ExperimentalFoundationApi
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
