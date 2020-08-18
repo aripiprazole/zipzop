@@ -21,6 +21,7 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 
+@ExperimentalFoundationApi
 @Composable
 fun LoginBody() {
   var username by state { TextFieldValue("") }
@@ -57,6 +58,7 @@ fun LoginBody() {
   ForgotPassword()
 }
 
+@ExperimentalFoundationApi
 @Composable
 private fun LoginInput(
   value: TextFieldValue,
@@ -84,7 +86,7 @@ private fun LoginInput(
       )
     }
 
-    TextField(
+    BaseTextField(
       modifier = Modifier
         .padding(8.dp)
         .heightIn(20.dp, 48.dp),
@@ -96,13 +98,9 @@ private fun LoginInput(
       textStyle = TextStyle(
         color = MaterialTheme.colors.onSurface,
         fontSize = TextUnit.Em(5)
-      ),
-      label = {
-        Text(placeholder!!)
-      }
+      )
     )
   }
-
 
   Box(
     modifier = Modifier
