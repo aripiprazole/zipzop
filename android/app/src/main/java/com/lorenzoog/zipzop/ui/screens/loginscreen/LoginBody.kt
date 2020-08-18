@@ -1,28 +1,25 @@
 package com.lorenzoog.zipzop.ui.screens.loginscreen
 
-import androidx.compose.Composable
-import androidx.compose.getValue
-import androidx.compose.setValue
-import androidx.compose.state
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.input.ImeAction
-import androidx.ui.input.KeyboardType
-import androidx.ui.input.PasswordVisualTransformation
-import androidx.ui.input.VisualTransformation
-import androidx.ui.layout.*
-import androidx.ui.layout.ColumnScope.gravity
-import androidx.ui.layout.ColumnScope.weight
-import androidx.ui.material.Button
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.OutlinedButton
-import androidx.ui.text.TextStyle
-import androidx.ui.text.font.FontWeight
-import androidx.ui.unit.TextUnit
-import androidx.ui.unit.dp
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ColumnScope.gravity
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedButton
+import androidx.compose.material.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.*
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun LoginBody() {
@@ -70,7 +67,7 @@ private fun LoginInput(
   modifier: Modifier = Modifier
 ) {
   Column(
-    modifier = modifier +
+    modifier = modifier then
       Modifier
         .fillMaxWidth()
         .padding(horizontal = 60.dp)
@@ -99,7 +96,10 @@ private fun LoginInput(
       textStyle = TextStyle(
         color = MaterialTheme.colors.onSurface,
         fontSize = TextUnit.Em(5)
-      )
+      ),
+      label = {
+        Text(placeholder!!)
+      }
     )
   }
 
@@ -108,7 +108,7 @@ private fun LoginInput(
     modifier = Modifier
       .fillMaxWidth()
       .height(0.8.dp)
-      .drawBackground(Color(0xFF8A8A8A))
+      .background(Color(0xFF8A8A8A))
   )
 }
 
