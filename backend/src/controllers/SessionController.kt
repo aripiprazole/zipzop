@@ -1,12 +1,12 @@
-package com.lorenzoog.zipzop.controllers
+package me.devgabi.zipzop.controllers
 
-import com.lorenzoog.zipzop.exceptions.AuthenticationException
-import com.lorenzoog.zipzop.auth.JwtService
-import com.lorenzoog.zipzop.auth.password.PasswordEncoder
-import com.lorenzoog.zipzop.dto.auth.LoginResponseDTO
-import com.lorenzoog.zipzop.dto.user.toDto
-import com.lorenzoog.zipzop.services.user.UserService
-import com.lorenzoog.zipzop.utils.current
+import me.devgabi.zipzop.exceptions.AuthenticationException
+import me.devgabi.zipzop.auth.JwtService
+import me.devgabi.zipzop.auth.password.PasswordEncoder
+import me.devgabi.zipzop.dto.auth.LoginResponseDTO
+import me.devgabi.zipzop.dto.user.toDto
+import me.devgabi.zipzop.services.user.UserService
+import me.devgabi.zipzop.utils.current
 import io.ktor.application.call
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Location

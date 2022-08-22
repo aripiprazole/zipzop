@@ -1,6 +1,6 @@
-package com.lorenzoog.zipzop.config
+package me.devgabi.zipzop.config
 
-import com.lorenzoog.zipzop.tables.Users
+import me.devgabi.zipzop.tables.Users
 import io.ktor.application.Application
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI

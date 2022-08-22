@@ -1,6 +1,6 @@
-package com.lorenzoog
+package me.devgabi
 
-import com.lorenzoog.zipzop.module
+import me.devgabi.zipzop.module
 import com.typesafe.config.ConfigFactory
 import io.ktor.application.Application
 import io.ktor.config.HoconApplicationConfig

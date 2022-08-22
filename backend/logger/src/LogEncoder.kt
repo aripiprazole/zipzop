@@ -1,12 +1,12 @@
-package com.lorenzoog.zipzop.logger
+package me.devgabi.zipzop.logger
 
 import ch.qos.logback.classic.spi.ILoggingEvent
 import ch.qos.logback.core.CoreConstants.LINE_SEPARATOR
 import ch.qos.logback.core.encoder.EncoderBase
-import com.lorenzoog.zipzop.logger.LogColor.Cyan
-import com.lorenzoog.zipzop.logger.LogColor.LightCyan
-import com.lorenzoog.zipzop.logger.LogColor.Red
-import com.lorenzoog.zipzop.logger.LogColor.Reset
+import me.devgabi.zipzop.logger.LogColor.Cyan
+import me.devgabi.zipzop.logger.LogColor.LightCyan
+import me.devgabi.zipzop.logger.LogColor.Red
+import me.devgabi.zipzop.logger.LogColor.Reset
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

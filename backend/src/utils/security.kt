@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.utils
+package me.devgabi.zipzop.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

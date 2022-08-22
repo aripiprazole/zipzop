@@ -1,5 +1,5 @@
 <configuration>
-  <appender name="STDOUT" class="com.lorenzoog.zipzop.logger.LogAppender">
+  <appender name="STDOUT" class="me.devgabi.zipzop.logger.LogAppender">
     <withJansi>true</withJansi>
   </appender>
 

@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop
+package me.devgabi.zipzop
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +9,8 @@ import androidx.compose.runtime.Providers
 import androidx.compose.ui.platform.setContent
 import com.github.zsoltk.compose.backpress.AmbientBackPressHandler
 import com.github.zsoltk.compose.backpress.BackPressHandler
-import com.lorenzoog.zipzop.ui.App
-import com.lorenzoog.zipzop.ui.ZipZopTheme
+import me.devgabi.zipzop.ui.App
+import me.devgabi.zipzop.ui.ZipZopTheme
 
 class MainActivity : AppCompatActivity() {
   private val backPressHandler = BackPressHandler()

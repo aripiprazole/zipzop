@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.logger
+package me.devgabi.zipzop.logger
 
 /**
  * https://github.com/nekkan/kodya/blob/development/core/src/main/kotlin/kodya/core/utils/io/logger/AnsiColor.kt

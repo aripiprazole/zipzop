@@ -1,9 +1,9 @@
-package com.lorenzoog.zipzop.config.di
+package me.devgabi.zipzop.config.di
 
 import com.auth0.jwt.algorithms.Algorithm
-import com.lorenzoog.zipzop.auth.JwtService
-import com.lorenzoog.zipzop.auth.password.Argon2PasswordEncoder
-import com.lorenzoog.zipzop.auth.password.PasswordEncoder
+import me.devgabi.zipzop.auth.JwtService
+import me.devgabi.zipzop.auth.password.Argon2PasswordEncoder
+import me.devgabi.zipzop.auth.password.PasswordEncoder
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI
 import org.koin.dsl.module

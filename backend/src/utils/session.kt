@@ -1,7 +1,7 @@
-package com.lorenzoog.zipzop.utils
+package me.devgabi.zipzop.utils
 
-import com.lorenzoog.zipzop.exceptions.AuthorizationException
-import com.lorenzoog.zipzop.config.UserSession
+import me.devgabi.zipzop.exceptions.AuthorizationException
+import me.devgabi.zipzop.config.UserSession
 import io.ktor.sessions.CurrentSession
 import io.ktor.sessions.get
 

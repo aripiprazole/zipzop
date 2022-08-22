@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.auth.password
+package me.devgabi.zipzop.auth.password
 
 import de.mkammerer.argon2.Argon2Factory
 

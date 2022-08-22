@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.ui.screens.loginscreen
+package me.devgabi.zipzop.ui.screens.loginscreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,7 +12,7 @@ import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import com.lorenzoog.zipzop.R
+import me.devgabi.zipzop.R
 
 @Composable
 fun LoginHeader() {

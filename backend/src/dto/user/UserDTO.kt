@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.dto.user
+package me.devgabi.zipzop.dto.user
 
 import kotlinx.serialization.Serializable
 

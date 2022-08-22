@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.dto.messages
+package me.devgabi.zipzop.dto.messages
 
 import kotlinx.serialization.Serializable
 

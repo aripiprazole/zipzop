@@ -1,9 +1,9 @@
-package com.lorenzoog.zipzop.controllers
+package me.devgabi.zipzop.controllers
 
-import com.lorenzoog.zipzop.Json
-import com.lorenzoog.zipzop.dto.messages.TextMessagePacket
-import com.lorenzoog.zipzop.services.user.UserService
-import com.lorenzoog.zipzop.utils.current
+import me.devgabi.zipzop.Json
+import me.devgabi.zipzop.dto.messages.TextMessagePacket
+import me.devgabi.zipzop.services.user.UserService
+import me.devgabi.zipzop.utils.current
 import io.ktor.http.cio.websocket.Frame
 import io.ktor.http.cio.websocket.readText
 import io.ktor.routing.Routing

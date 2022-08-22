@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop
+package me.devgabi.zipzop
 
 import org.junit.Test
 

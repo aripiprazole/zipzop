@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.tables
+package me.devgabi.zipzop.tables
 
 import org.jetbrains.exposed.dao.id.LongIdTable
 

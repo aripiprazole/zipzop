@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.ui
+package me.devgabi.zipzop.ui
 
 enum class ScreenName(val sysName: String) {
   Home("screen"),

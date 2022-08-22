@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.ui.screens.loginscreen
+package me.devgabi.zipzop.ui.screens.loginscreen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.ScrollableColumn

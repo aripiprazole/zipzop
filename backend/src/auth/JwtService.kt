@@ -1,11 +1,11 @@
-package com.lorenzoog.zipzop.auth
+package me.devgabi.zipzop.auth
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.exceptions.JWTDecodeException
-import com.lorenzoog.zipzop.exceptions.AuthorizationException
-import com.lorenzoog.zipzop.entities.User
-import com.lorenzoog.zipzop.services.user.UserService
+import me.devgabi.zipzop.exceptions.AuthorizationException
+import me.devgabi.zipzop.entities.User
+import me.devgabi.zipzop.services.user.UserService
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI
 import org.koin.core.KoinComponent

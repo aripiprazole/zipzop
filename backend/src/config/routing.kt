@@ -1,12 +1,12 @@
-package com.lorenzoog.zipzop.config
+package me.devgabi.zipzop.config
 
-import com.lorenzoog.zipzop.controllers.messageController
-import com.lorenzoog.zipzop.exceptions.AuthenticationException
-import com.lorenzoog.zipzop.exceptions.AuthorizationException
-import com.lorenzoog.zipzop.controllers.sessionController
-import com.lorenzoog.zipzop.dto.exceptions.ExceptionDTO
-import com.lorenzoog.zipzop.exceptions.EntityNotFoundException
-import com.lorenzoog.zipzop.exceptions.UniqueFieldViolationException
+import me.devgabi.zipzop.controllers.messageController
+import me.devgabi.zipzop.exceptions.AuthenticationException
+import me.devgabi.zipzop.exceptions.AuthorizationException
+import me.devgabi.zipzop.controllers.sessionController
+import me.devgabi.zipzop.dto.exceptions.ExceptionDTO
+import me.devgabi.zipzop.exceptions.EntityNotFoundException
+import me.devgabi.zipzop.exceptions.UniqueFieldViolationException
 import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.StatusPages

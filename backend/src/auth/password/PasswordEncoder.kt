@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.auth.password
+package me.devgabi.zipzop.auth.password
 
 interface PasswordEncoder {
 

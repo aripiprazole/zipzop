@@ -1,8 +1,8 @@
-package com.lorenzoog.zipzop.config
+package me.devgabi.zipzop.config
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.lorenzoog.zipzop.services.user.UserService
+import me.devgabi.zipzop.services.user.UserService
 import io.ktor.application.Application
 import io.ktor.auth.authentication
 import io.ktor.auth.jwt.JWTPrincipal

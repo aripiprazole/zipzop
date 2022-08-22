@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.logger
+package me.devgabi.zipzop.logger
 
 import ch.qos.logback.classic.Level
 

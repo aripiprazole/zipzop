@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.ui
+package me.devgabi.zipzop.ui
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

@@ -13,7 +13,7 @@ android {
   compileSdkVersion(30)
 
   defaultConfig {
-    applicationId = "com.lorenzoog.zipzop"
+    applicationId = "me.devgabi.zipzop"
     versionCode = 1
     versionName = "1.0"
 

@@ -1,8 +1,8 @@
-package com.lorenzoog.zipzop.services.user
+package me.devgabi.zipzop.services.user
 
-import com.lorenzoog.zipzop.dto.user.UserCreateDTO
-import com.lorenzoog.zipzop.dto.user.UserUpdateDTO
-import com.lorenzoog.zipzop.entities.User
+import me.devgabi.zipzop.dto.user.UserCreateDTO
+import me.devgabi.zipzop.dto.user.UserUpdateDTO
+import me.devgabi.zipzop.entities.User
 
 interface UserService {
   suspend fun create(data: UserCreateDTO): User

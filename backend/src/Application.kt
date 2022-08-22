@@ -1,8 +1,8 @@
-package com.lorenzoog.zipzop
+package me.devgabi.zipzop
 
-import com.lorenzoog.zipzop.config.*
-import com.lorenzoog.zipzop.config.di.authModule
-import com.lorenzoog.zipzop.config.di.mainModule
+import me.devgabi.zipzop.config.*
+import me.devgabi.zipzop.config.di.authModule
+import me.devgabi.zipzop.config.di.mainModule
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
@@ -51,7 +51,7 @@ fun Application.module() {
 
   // Install [ContentNegotiation] with local [Json]
   install(ContentNegotiation) {
-    json(json = com.lorenzoog.zipzop.Json)
+    json(json = me.devgabi.zipzop.Json)
   }
 
   // Install [CallLogging] to log the application requests

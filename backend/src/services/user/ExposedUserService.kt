@@ -1,13 +1,13 @@
-package com.lorenzoog.zipzop.services.user
+package me.devgabi.zipzop.services.user
 
-import com.lorenzoog.zipzop.auth.password.PasswordEncoder
-import com.lorenzoog.zipzop.dto.user.UserCreateDTO
-import com.lorenzoog.zipzop.dto.user.UserDTO
-import com.lorenzoog.zipzop.dto.user.UserUpdateDTO
-import com.lorenzoog.zipzop.entities.User
-import com.lorenzoog.zipzop.exceptions.EntityNotFoundException
-import com.lorenzoog.zipzop.exceptions.UniqueFieldViolationException
-import com.lorenzoog.zipzop.tables.Users
+import me.devgabi.zipzop.auth.password.PasswordEncoder
+import me.devgabi.zipzop.dto.user.UserCreateDTO
+import me.devgabi.zipzop.dto.user.UserDTO
+import me.devgabi.zipzop.dto.user.UserUpdateDTO
+import me.devgabi.zipzop.entities.User
+import me.devgabi.zipzop.exceptions.EntityNotFoundException
+import me.devgabi.zipzop.exceptions.UniqueFieldViolationException
+import me.devgabi.zipzop.tables.Users
 import org.jetbrains.exposed.sql.Op
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.koin.core.KoinComponent

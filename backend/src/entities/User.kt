@@ -1,6 +1,6 @@
-package com.lorenzoog.zipzop.entities
+package me.devgabi.zipzop.entities
 
-import com.lorenzoog.zipzop.tables.Users
+import me.devgabi.zipzop.tables.Users
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID

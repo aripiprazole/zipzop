@@ -1,7 +1,7 @@
-package com.lorenzoog.zipzop.config
+package me.devgabi.zipzop.config
 
-import com.lorenzoog.zipzop.auth.JwtService
-import com.lorenzoog.zipzop.entities.User
+import me.devgabi.zipzop.auth.JwtService
+import me.devgabi.zipzop.entities.User
 import io.ktor.application.Application
 import io.ktor.application.ApplicationCall
 import io.ktor.application.install

@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.dto.exceptions
+package me.devgabi.zipzop.dto.exceptions
 
 import kotlinx.serialization.Serializable
 

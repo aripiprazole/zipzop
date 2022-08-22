@@ -1,4 +1,4 @@
-package com.lorenzoog.zipzop.exceptions
+package me.devgabi.zipzop.exceptions
 
 import java.lang.RuntimeException
 

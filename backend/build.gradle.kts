@@ -12,7 +12,7 @@ plugins {
   kotlin("plugin.serialization") version "1.3.70"
 }
 
-group = "com.lorenzoog"
+group = "me.devgabi"
 version = "0.0.1"
 
 application {

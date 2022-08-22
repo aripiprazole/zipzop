@@ -1,15 +1,15 @@
-package com.lorenzoog.controllers
+package me.devgabi.controllers
 
-import com.lorenzoog.withMocksApplication
-import com.lorenzoog.zipzop.Json
-import com.lorenzoog.zipzop.auth.JwtService
-import com.lorenzoog.zipzop.auth.password.PasswordEncoder
-import com.lorenzoog.zipzop.controllers.Login
-import com.lorenzoog.zipzop.dto.auth.LoginResponseDTO
-import com.lorenzoog.zipzop.dto.user.UserCreateDTO
-import com.lorenzoog.zipzop.dto.user.UserResponseDTO
-import com.lorenzoog.zipzop.dto.user.toDto
-import com.lorenzoog.zipzop.services.user.UserService
+import me.devgabi.withMocksApplication
+import me.devgabi.zipzop.Json
+import me.devgabi.zipzop.auth.JwtService
+import me.devgabi.zipzop.auth.password.PasswordEncoder
+import me.devgabi.zipzop.controllers.Login
+import me.devgabi.zipzop.dto.auth.LoginResponseDTO
+import me.devgabi.zipzop.dto.user.UserCreateDTO
+import me.devgabi.zipzop.dto.user.UserResponseDTO
+import me.devgabi.zipzop.dto.user.toDto
+import me.devgabi.zipzop.services.user.UserService
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod

@@ -4,7 +4,7 @@ plugins {
   kotlin("jvm")
 }
 
-group = "com.lorenzoog.zipzop"
+group = "me.devgabi.zipzop"
 version = "0.0.1"
 
 repositories {
